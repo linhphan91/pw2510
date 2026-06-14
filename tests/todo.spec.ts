@@ -1,4 +1,7 @@
 import { test, expect } from '@playwright/test';
+/*
+Copy from Record and Playback
+*/
 
 test('test', async ({ page }) => {
   await page.goto('https://todomvc.com/examples/react/dist/');
