@@ -6,6 +6,7 @@ Built-in locators in Playwright are designed to be resilient and easy to use. Th
 
 test('Verify adding new todo successfully', async ({ page }) => {
   await page.goto('https://todomvc.com/examples/react/dist/');
+
   await page.getByPlaceholder('What needs to be done?').fill('Buy milk'); //Get locator by Attribute
   await page.getByPlaceholder('What needs to be done?').press('Enter');
 
@@ -94,8 +95,10 @@ test('Verify renaming todo successfully', async ({ page }) => {
   await page
     .getByRole('listitem') //return all
     .filter({ hasText: 'Buy milk' })
+    .last() //phan tu cuoi cung
+    //.nth(0) //phan tu thu bnhiu
     .dblclick();
-    
+
   await page
     .getByTestId('todo-list')
     .getByTestId('text-input')
@@ -116,8 +119,13 @@ test('Verify renaming todo successfully', async ({ page }) => {
     .filter({ hasText: 'Buy almond milk' })
     .count())
     .toBe(1);
-    
-     expect(await page
+
+  expect(await page
+    .getByTestId('to-do-item-label'))
+    .toHaveText('Buy almond milk');
+
+
+  expect(await page
     .getByRole('listitem') //return all
     .filter({ hasText: 'Buy milk' })
     .count())
@@ -125,6 +133,7 @@ test('Verify renaming todo successfully', async ({ page }) => {
 
 });
 
-function press(arg0: string) {
-  throw new Error('Function not implemented.');
-}
+
+
+
+
