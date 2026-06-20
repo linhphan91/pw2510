@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
+
 test(" Login successful with valid credentials", async ({ page }) => {
+
     await page.goto("https://the-internet.herokuapp.com/login");
     await expect(page
         .getByRole('heading', { name: "Login Page" }))
@@ -40,7 +42,6 @@ test(" Login unsuccessful with invalid username", async ({ page }) => {
     await expect(page
         .getByText('Your username is invalid!'))
         .toBeVisible();
-
 
 });
 
