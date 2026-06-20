@@ -26,3 +26,26 @@ test("Select an option in dropdown", async ({ page }) => {
         .toHaveText('Option 1');
 
 });
+
+test("Select multiple options in dropdown", async ({ page }) => {
+
+    await page.goto("https://output.jsbin.com/osebed/2")
+
+    await page
+        .locator('#fruits')
+        .selectOption(['Banana', 'Grape'])
+    //.selectOption([{label: 'Banana'}, {label: 'Orange'}])
+
+    const listFruits = page.locator('#fruits option:checked')
+    await expect(listFruits)
+        .toHaveText(['Banana', 'Grape'])
+
+
+    await page
+        .locator('#fruits')
+        .selectOption([])
+
+    await expect(listFruits)
+        .toHaveText([])
+});
+
