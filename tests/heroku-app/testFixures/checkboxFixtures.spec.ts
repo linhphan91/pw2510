@@ -1,4 +1,4 @@
-import { test as baseTest, expect } from '../heroku-app/fixtures/heroku-fixture'
+import { test as baseTest, expect } from '../fixtures/heroku-fixture'
 
 baseTest('Checkbox', async ({checkboxPage }) => {
     await checkboxPage.goto();

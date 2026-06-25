@@ -1,5 +1,5 @@
-import { test as baseTest, expect } from './fixtures/heroku-fixture.ts';
-import { LoginPage } from './pages/loginPage.ts';
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/loginPage.ts';
 
 const dataSet = [
     { username: 'tomsmith', password: 'SuperSecretPassword!', message: 'You logged into a secure area!' },
@@ -9,8 +9,8 @@ const dataSet = [
 ];
 
 dataSet.forEach(({ username, password, message }) => {
-    baseTest(`Login test with username: ${username} and password: ${password} and show message: ${message}`, async ({ loginPage, tablePage }) => {
-        
+    test(`Login test with username: ${username} and password: ${password} and show message: ${message}`, async ({ page }) => {
+        const loginPage = new LoginPage(page);
         await loginPage.goto();
         await loginPage.submitForm(username, password);
 
