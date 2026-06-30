@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "api-test": "npx playwright test tests/booking/api.spec.ts",
+    "heroku-test": "npx playwright test tests/heroku-app"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
